@@ -41,15 +41,22 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 app.use(express.static("public"))
 
-const pg = require('pg');
-var pool =  new pg.Pool()
+const { Pg }= require('pg');
+const pg = new Pg({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
 
-pool.connect(process.env.DATABASE_URL, function (err, client, done) {
-    client.query('SELECT * FROM lyls', function (err, result) {
-        done();
-        if (err) return console.error(err);
-        console.log(result.rows);
-    });
+pg.connect();
+
+pg.query('SELECT * FROM lyls;', (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+        console.log(JSON.stringify(row));
+    }
+    client.end();
 });
 app.listen(process.env.PORT || 3000,
     () => console.log("Server is runnnning..."));
