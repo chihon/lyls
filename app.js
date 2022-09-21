@@ -51,10 +51,12 @@ const pg = new Pg({
 
 pg.connect();
 
-pg.query('SELECT * FROM pg_catalog.pg_tables;', (err, res) => {
+pg.query('SELECT * FROM lylsdraw;', (err, res) => {
     if (err) throw err;
-    console.log(res);
-    client.end();
+    for (let row of res.rows) {
+        console.log(JSON.stringify(row));
+    }
+    pg.end();
 });
 app.listen(process.env.PORT || 3000,
     () => console.log("Server is runnnning..."));
