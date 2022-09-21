@@ -41,7 +41,7 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 app.use(express.static("public"))
 
-const { Pg }= require('pg');
+const Pg = require('pg').Client;
 const pg = new Pg({
     connectionString: process.env.DATABASE_URL,
     ssl: {
