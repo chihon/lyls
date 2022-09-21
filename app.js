@@ -41,10 +41,7 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 app.use(express.static("public"))
 
-
-app.listen(process.env.PORT || 3000,
-    () => console.log("Server is runnnning..."));
-
+const pg = require('pg');
 var pool =  new pg.Pool()
 
 pool.connect(process.env.DATABASE_URL, function (err, client, done) {
@@ -54,3 +51,5 @@ pool.connect(process.env.DATABASE_URL, function (err, client, done) {
         console.log(result.rows);
     });
 });
+app.listen(process.env.PORT || 3000,
+    () => console.log("Server is runnnning..."));
