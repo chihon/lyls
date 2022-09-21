@@ -51,11 +51,9 @@ const pg = new Pg({
 
 pg.connect();
 
-pg.query('show tables;', (err, res) => {
+pg.query('SELECT * FROM pg_catalog.pg_tables;', (err, res) => {
     if (err) throw err;
-    for (let row of res.rows) {
-        console.log(JSON.stringify(row));
-    }
+    console.log(res);
     client.end();
 });
 app.listen(process.env.PORT || 3000,
