@@ -51,7 +51,7 @@ const pg = new Pg({
 
 pg.connect();
 
-pg.query('SELECT * FROM lyls;', (err, res) => {
+pg.query('show tables;', (err, res) => {
     if (err) throw err;
     for (let row of res.rows) {
         console.log(JSON.stringify(row));
