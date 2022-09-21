@@ -41,9 +41,6 @@ app.use(function(err, req, res, next) {
 module.exports = app;
 app.use(express.static("public"))
 
-app.get("/", function (req, res) {
-    res.send("<h1>Hello World!</h1>")
-})
 
 app.listen(process.env.PORT || 3000,
     () => console.log("Server is runnnning..."));
