@@ -26,7 +26,12 @@
         border-bottom: 1px solid #ddd;
     }
 
-        #myTable tr.header, #myTable tr:hover {
+        #myTable tr.header {
             /* Add a grey background color to the table header and on hover */
-            background-color: #666666;
+            background-color: #878787;
+        }
+
+        #myTable tr:hover {
+            /* Add a grey background color to the table header and on hover */
+            background-color: #878787;
         }
