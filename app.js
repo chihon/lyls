@@ -40,7 +40,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 app.use(express.static("public"))
-
+/*
 const Pg = require('pg').Client;
 const pg = new Pg({
     connectionString: process.env.DATABASE_URL,
@@ -58,5 +58,6 @@ pg.query('SELECT name2 FROM lylsdraw;', (err, res) => {
     }
     pg.end();
 });
+*/
 app.listen(process.env.PORT || 3000,
     () => console.log("Server is runnnning..."));
