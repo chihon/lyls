@@ -2,23 +2,25 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <script type="text/javascript" src="/javascripts/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Alegreya|Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>百萬抽獎</title>
 </head>
 
 <body>
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜尋關鍵字">
-
     <table id="myTable">
+
         <tr class="header">
-            <th style="width:33%;">編號</th>
-            <th style="width:33%;">銷售營業處</th>
-            <th style="width:33%;">客戶姓名</th>
-            <th style="width:1%;">客戶姓名2</th>
+            <th style="width:33.3%;">編號</th>
+            <th style="width:33.3%;">銷售營業處</th>
+            <th style="width:33.3%;">客戶姓名</th>
+            <th style="width:0.1%;"></th>
         </tr>
         <tbody>
+
             <tr>
                 <td>001</td>
                 <td>圓生處</td>
@@ -1113,6 +1115,17 @@
             </tr>
         </tbody>
     </table>
-    </table>
+    <script>
+        var tbl = document.getElementById('myTable');
+        var rows = tbl.getElementsByTagName('tr');
+        //console.log(rows.length);
+        for (var row = 0; row < rows.length; row++) {
+            var cols = rows[row].children;
+            var cell = cols[3];
+            if (cell.tagName == 'TD') {
+                cell.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
